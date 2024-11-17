@@ -92,7 +92,6 @@ You can view the model training phase, data exploration, and all preprocessing s
 
 <p align="center">
   <img src="https://via.placeholder.com/600x300" alt="App Screenshot 1" width="45%" style="border-radius:10px;">
-  <img src="https://via.placeholder.com/600x300" alt="App Screenshot 2" width="45%" style="border-radius:10px;">
 </p>
 
 ---
@@ -107,10 +106,7 @@ We welcome contributions! Please follow these steps:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-### 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-<p align="center" style="color:#00796b;font-weight:bold;">Made with 💙 by [Your Name]</p>
+<p align="center" style="color:#00796b;font-weight:bold;">Made with 💙 by [Ahmadreza Gholami]</p>

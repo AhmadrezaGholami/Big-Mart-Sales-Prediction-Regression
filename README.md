@@ -29,7 +29,7 @@
 BigMart Sales Prediction is a **machine learning** web application that helps predict sales for various products in different outlets of BigMart. It uses a regression model to analyze features like **Item Weight**, **Item Visibility**, and **Outlet Location Type** to make predictions on sales.
 
 <p align="center">
-  <a href="https://www.kaggle.com/your-username/your-kaggle-notebook">
+  <a href="https://www.kaggle.com/code/ahmadrezagholami2001/bigmart-sales-prediction-rl-hpt-cv">
     <img src="https://img.shields.io/badge/View%20Training%20Phase-Kaggle-blue?style=for-the-badge&logo=kaggle" alt="Kaggle Badge">
   </a>
 </p>

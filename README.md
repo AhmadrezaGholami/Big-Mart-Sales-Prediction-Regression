@@ -18,9 +18,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Training Phase on Kaggle](#training-phase-on-kaggle)
-- [Screenshots](#screenshots)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -78,7 +76,7 @@ BigMart Sales Prediction is a **machine learning** web application that helps pr
 
 ### 📊 Training Phase on Kaggle
 
-You can view the model training phase, data exploration, and all preprocessing steps in detail on Kaggle. [Click here to see the training notebook on Kaggle](https://www.kaggle.com/your-username/your-kaggle-notebook).
+You can view the model training phase, data exploration, and all preprocessing steps in detail on Kaggle. [Click here to see the training notebook on Kaggle](https://www.kaggle.com/code/ahmadrezagholami2001/bigmart-sales-prediction-rl-hpt-cv).
 
 <p align="center">
   <a href="https://www.kaggle.com/code/ahmadrezagholami2001/bigmart-sales-prediction-rl-hpt-cv">

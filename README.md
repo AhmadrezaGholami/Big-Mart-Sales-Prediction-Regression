@@ -86,13 +86,6 @@ You can view the model training phase, data exploration, and all preprocessing s
   </a>
 </p>
 
----
-
-### 📸 Screenshots
-
-<p align="center">
-  <img src="https://via.placeholder.com/600x300" alt="App Screenshot 1" width="45%" style="border-radius:10px;">
-</p>
 
 ---
 

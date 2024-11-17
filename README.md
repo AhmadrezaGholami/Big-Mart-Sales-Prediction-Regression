@@ -81,7 +81,7 @@ BigMart Sales Prediction is a **machine learning** web application that helps pr
 You can view the model training phase, data exploration, and all preprocessing steps in detail on Kaggle. [Click here to see the training notebook on Kaggle](https://www.kaggle.com/your-username/your-kaggle-notebook).
 
 <p align="center">
-  <a href="https://www.kaggle.com/your-username/your-kaggle-notebook">
+  <a href="https://www.kaggle.com/code/ahmadrezagholami2001/bigmart-sales-prediction-rl-hpt-cv">
     <img src="https://img.shields.io/badge/View%20Training%20Phase-Kaggle-blue?style=for-the-badge&logo=kaggle" alt="Kaggle Badge">
   </a>
 </p>

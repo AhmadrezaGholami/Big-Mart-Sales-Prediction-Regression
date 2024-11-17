@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigMart Sales Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS for additional styling -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #eceff1, #f1f8e9);
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #00796b;
+            text-align: center;
+            margin-top: 20px;
+            animation: fadeIn 2s ease;
+        }
+        form {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(-100%);
+            animation: slideIn 1s ease forwards;
+        }
+        .form-row {
+            margin-bottom: 15px;
+        }
+        input[type="number"], select {
+            border-color: #80cbc4;
+        }
+        input[type="number"]:focus, select:focus {
+            border-color: #00796b;
+            box-shadow: 0px 0px 10px rgba(0, 121, 107, 0.3);
+            transition: box-shadow 0.3s ease;
+        }
+        button {
+            background-color: #00796b;
+            color: #ffffff;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+        button:hover {
+            background-color: #004d40;
+            transform: translateY(-3px);
+            animation: bounce 0.3s;
+        }
+        h2 {
+            text-align: center;
+            color: #388e3c;
+            margin-top: 20px;
+            animation: fadeInUp 1.5s ease;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1><i class="fas fa-store"></i> BigMart Sales Prediction</h1>
+    <form method="POST" action="/predict">
+        <!-- Numerical Input Fields -->
+        <h3>Enter Numerical Features</h3>
+        <div class="form-row align-items-center">
+            <div class="col-md-4">
+                <label for="Item_Weight"><i class="fas fa-weight"></i> Item Weight:</label>
+            </div>
+            <div class="col-md-8">
+                <input type="number" step="any" name="Item_Weight" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-row align-items-center">
+            <div class="col-md-4">
+                <label for="Item_Visibility"><i class="fas fa-eye"></i> Item Visibility:</label>
+            </div>
+            <div class="col-md-8">
+                <input type="number" step="any" name="Item_Visibility" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-row align-items-center">
+            <div class="col-md-4">
+                <label for="Item_MRP"><i class="fas fa-dollar-sign"></i> Item MRP:</label>
+            </div>
+            <div class="col-md-8">
+                <input type="number" step="any" name="Item_MRP" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-row align-items-center">
+            <div class="col-md-4">
+                <label for="Outlet_Establishment_Year"><i class="fas fa-calendar-alt"></i> Outlet Establishment Year:</label>
+            </div>
+            <div class="col-md-8">
+                <input type="number" name="Outlet_Establishment_Year" class="form-control" required>
+            </div>
+        </div>
+
+        <!-- Dropdowns for Categorical Features -->
+        <h3>Select Categorical Features</h3>
+        <div class="form-row align-items-center">
+            <div class="col-md-4">
+                <label for="Item_Fat_Content"><i class="fas fa-bacon"></i> Item Fat Content:</label>
+            </div>
+            <div class="col-md-8">
+                <select name="Item_Fat_Content" class="form-control" required>
+                    {% for option in dropdown_options['Item_Fat_Content'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row align-items-center">
+            <div class="col-md-4">
+                <label for="Item_Type"><i class="fas fa-tag"></i> Item Type:</label>
+            </div>
+            <div class="col-md-8">
+                <select name="Item_Type" class="form-control" required>
+                    {% for option in dropdown_options['Item_Type'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row align-items-center">
+            <div class="col-md-4">
+                <label for="Outlet_Size"><i class="fas fa-store-alt"></i> Outlet Size:</label>
+            </div>
+            <div class="col-md-8">
+                <select name="Outlet_Size" class="form-control" required>
+                    {% for option in dropdown_options['Outlet_Size'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row align-items-center">
+            <div class="col-md-4">
+                <label for="Outlet_Location_Type"><i class="fas fa-map-marker-alt"></i> Outlet Location Type:</label>
+            </div>
+            <div class="col-md-8">
+                <select name="Outlet_Location_Type" class="form-control" required>
+                    {% for option in dropdown_options['Outlet_Location_Type'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row align-items-center">
+            <div class="col-md-4">
+                <label for="Outlet_Type"><i class="fas fa-building"></i> Outlet Type:</label>
+            </div>
+            <div class="col-md-8">
+                <select name="Outlet_Type" class="form-control" required>
+                    {% for option in dropdown_options['Outlet_Type'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Model Selection -->
+        <h3>Select Model</h3>
+        <div class="form-row align-items-center">
+            <div class="col-md-4">
+                <label for="model"><i class="fas fa-robot"></i> Choose Model:</label>
+            </div>
+            <div class="col-md-8">
+                <select name="model" class="form-control" required>
+                    {% for model_name in models %}
+                        <option value="{{ model_name }}">{{ model_name | capitalize }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit"><i class="fas fa-calculator"></i> Predict</button>
+    </form>
+
+    <!-- Display Prediction Result -->
+    {% if prediction is not none %}
+    <h2><i class="fas fa-chart-line"></i> Prediction: {{ prediction | currency }}</h2>
+{% endif %}
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
